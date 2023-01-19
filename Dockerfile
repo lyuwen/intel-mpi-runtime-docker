@@ -24,6 +24,7 @@ RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
       intel-oneapi-mpi-2021.7.1 \
       intel-oneapi-compiler-fortran-runtime-2022.2.1 \
+      intel-oneapi-runtime-mkl \
       && \
     apt-get autoremove --purge -y && \
     apt-get autoclean -y && \
@@ -45,5 +46,10 @@ ENV LD_LIBRARY_PATH=/opt/intel/oneapi/compiler/2022.2.1/linux/compiler/lib/intel
 ENV LD_LIBRARY_PATH=/opt/intel/oneapi/compiler/2022.2.1/linux/lib/x64:$LD_LIBRARY_PATH
 ENV LD_LIBRARY_PATH=/opt/intel/oneapi/compiler/2022.2.1/linux/lib:$LD_LIBRARY_PATH
 ENV DIAGUTIL_PATH=/opt/intel/oneapi/compiler/2022.2.1/sys_check/sys_check.sh:$DIAGUTIL_PATH
-
-
+# MKL environment variables
+ENV MKLROOT=/opt/intel/oneapi/mkl/latest
+ENV LD_LIBRARY_PATH=${MKLROOT}/lib/intel64:$LD_LIBRARY_PATH
+ENV LIBRARY_PATH=${MKLROOT}/lib/intel64:$LIBRARY_PATH
+ENV CPATH=${MKLROOT}/include:$CPATH
+ENV PKG_CONFIG_PATH=${MKLROOT}/lib/pkgconfig:$PKG_CONFIG_PATH
+ENV NLSPATH=${MKLROOT}/lib/intel64/locale/en_US/mkl_msg.cat:$NLSPATH
