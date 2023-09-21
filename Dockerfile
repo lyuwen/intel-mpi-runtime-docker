@@ -24,6 +24,7 @@ RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
       intel-oneapi-mpi-2021.3.0 \
       intel-oneapi-compiler-fortran-runtime-2021.3.0 \
+      libucx-dev ucx-utils \
       && \
     apt-get autoremove --purge -y && \
     apt-get autoclean -y && \
