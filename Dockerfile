@@ -28,8 +28,9 @@ RUN apt-get update && \
       intel-oneapi-mpi-devel-2021.3.0 \
       intel-oneapi-mpi-2021.3.0 \
       intel-oneapi-mkl-devel-2021.3.0 \
-      libucx-dev ucx-utils \
       && \
+    wget -O /tmp/ucx.deb https://github.com/openucx/ucx/releases/download/v1.12.1/ucx-v1.12.1-ubuntu18.04-mofed5-cuda11.deb && \
+    apt install -y /tmp/ucx.deb && apt install -yf && rm -f /tmp/ucx.deb && \
     apt-get autoremove --purge -y && \
     apt-get autoclean -y && \
     rm -rf /var/cache/apt/* /var/lib/apt/lists/*
