@@ -25,6 +25,7 @@ RUN apt-get update && \
       intel-oneapi-mpi-2021.8.0 \
       intel-oneapi-compiler-fortran-runtime-2023.0.0 \
       intel-oneapi-runtime-mkl \
+      libucx-dev ucx-utils \
       && \
     apt-get autoremove --purge -y && \
     apt-get autoclean -y && \
