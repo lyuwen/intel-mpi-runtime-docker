@@ -1,4 +1,4 @@
-FROM ubuntu:jammy
+FROM ubuntu:18.04
 
 RUN sed -i -e 's/archive.ubuntu.com/mirrors.ustc.edu.cn/' -e 's/security.ubuntu.com/mirrors.ustc.edu.cn/' /etc/apt/sources.list
 
