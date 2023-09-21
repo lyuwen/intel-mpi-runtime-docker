@@ -50,6 +50,20 @@ ENV LD_LIBRARY_PATH=${I_COMPILER_ROOT}/linux/compiler/lib/intel64_lin:$LD_LIBRAR
 ENV LD_LIBRARY_PATH=${I_COMPILER_ROOT}/linux/lib/x64:$LD_LIBRARY_PATH
 ENV LD_LIBRARY_PATH=${I_COMPILER_ROOT}/linux/lib:$LD_LIBRARY_PATH
 ENV DIAGUTIL_PATH=${I_COMPILER_ROOT}/sys_check/sys_check.sh:$DIAGUTIL_PATH
+# Compiler ENV VARS
+ENV CMPLR_ROOT=/opt/intel/oneapi/compiler/2023.0.0
+ENV TBBROOT=/opt/intel/oneapi/tbb/2021.10.0
+ENV CPATH=/opt/intel/oneapi/tbb/2021.10.0/include:$CPATH
+ENV LIBRARY_PATH=/opt/intel/oneapi/tbb/2021.10.0/lib/intel64/gcc4.8:$LIBRARY_PATH
+ENV LD_LIBRARY_PATH=/opt/intel/oneapi/tbb/2021.10.0/lib/intel64/gcc4.8:$LD_LIBRARY_PATH
+ENV CMAKE_PREFIX_PATH=/opt/intel/oneapi/tbb/2021.10.0:$CMAKE_PREFIX_PATH
+ENV OCL_ICD_FILENAMES=$OCL_ICD_FILENAMES:/opt/intel/oneapi/compiler/2023.0.0/linux/lib/x64/libintelocl.so
+ENV PATH=/opt/intel/oneapi/compiler/2023.0.0/linux/bin:$PATH
+ENV PATH=/opt/intel/oneapi/compiler/2023.0.0/linux/bin/intel64:$PATH
+ENV MANPATH=$MANPATH:/opt/intel/oneapi/compiler/2023.0.0/documentation/en/man/common
+ENV CMAKE_PREFIX_PATH=/opt/intel/oneapi/compiler/2023.0.0/linux/IntelDPCPP:$CMAKE_PREFIX_PATH
+ENV NLSPATH=/opt/intel/oneapi/compiler/2023.0.0/linux/compiler/lib/intel64_lin/locale/%l_%t/%N:$NLSPATH
+ENV DIAGUTIL_PATH=/opt/intel/oneapi/compiler/2023.0.0/sys_check/sys_check.sh:$DIAGUTIL_PATH
 # MKL environment variables
 ENV MKLROOT=/opt/intel/oneapi/mkl/latest
 ENV LD_LIBRARY_PATH=${MKLROOT}/lib/intel64:$LD_LIBRARY_PATH
