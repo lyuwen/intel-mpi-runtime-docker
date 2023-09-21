@@ -26,7 +26,7 @@ RUN apt-get update && \
       intel-oneapi-compiler-fortran-runtime-2021.3.0 \
       && \
     wget -O /tmp/ucx.deb https://github.com/openucx/ucx/releases/download/v1.12.1/ucx-v1.12.1-ubuntu18.04-mofed5-cuda11.deb && \
-    apt install /tmp/ucx.deb && apt install -yf && rm -f /tmp/ucx.deb && \
+    apt install -y /tmp/ucx.deb && apt install -yf && rm -f /tmp/ucx.deb && \
     apt-get autoremove --purge -y && \
     apt-get autoclean -y && \
     rm -rf /var/cache/apt/* /var/lib/apt/lists/*
