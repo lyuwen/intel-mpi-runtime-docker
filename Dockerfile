@@ -28,6 +28,7 @@ RUN apt-get update && \
       intel-oneapi-mpi-devel-2021.3.0 \
       intel-oneapi-mpi-2021.3.0 \
       intel-oneapi-mkl-devel-2021.3.0 \
+      libucx-dev ucx-utils \
       && \
     apt-get autoremove --purge -y && \
     apt-get autoclean -y && \
