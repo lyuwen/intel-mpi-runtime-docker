@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:22.04
 
 RUN sed -i -e 's/archive.ubuntu.com/mirrors.ustc.edu.cn/' -e 's/security.ubuntu.com/mirrors.ustc.edu.cn/' /etc/apt/sources.list
 
@@ -24,9 +24,8 @@ RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
       intel-oneapi-mpi-2021.3.0 \
       intel-oneapi-compiler-fortran-runtime-2021.3.0 \
+      libucx-dev ucx-utils \
       && \
-    wget -O /tmp/ucx.deb https://github.com/openucx/ucx/releases/download/v1.12.1/ucx-v1.12.1-ubuntu18.04-mofed5-cuda11.deb && \
-    apt install -y /tmp/ucx.deb && apt install -yf && rm -f /tmp/ucx.deb && \
     apt-get autoremove --purge -y && \
     apt-get autoclean -y && \
     rm -rf /var/cache/apt/* /var/lib/apt/lists/*
