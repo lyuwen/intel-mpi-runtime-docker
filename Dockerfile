@@ -4,7 +4,6 @@ RUN sed -i -e 's/archive.ubuntu.com/mirrors.ustc.edu.cn/' -e 's/security.ubuntu.
 
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-      gcc g++ gfortran \
       sudo \
       wget \
       gpg \
@@ -23,10 +22,9 @@ RUN wget -O - https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PR
 
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-      intel-oneapi-compiler-dpcpp-cpp-and-cpp-classic-2023.2.1 \
-      intel-oneapi-compiler-fortran-2023.2.1 \
-      intel-oneapi-mpi-devel-2021.10.0 \
       intel-oneapi-mpi-2021.10.0 \
+      intel-oneapi-compiler-fortran-runtime-2023.2.1 \
+      intel-oneapi-compiler-dpcpp-cpp-and-cpp-classic-runtime-2023.2.1 \
       libucx-dev ucx-utils \
       && \
     apt-get autoremove --purge -y && \
@@ -51,17 +49,3 @@ ENV LD_LIBRARY_PATH=${I_COMPILER_ROOT}/linux/compiler/lib/intel64_lin:$LD_LIBRAR
 ENV LD_LIBRARY_PATH=${I_COMPILER_ROOT}/linux/lib/x64:$LD_LIBRARY_PATH
 ENV LD_LIBRARY_PATH=${I_COMPILER_ROOT}/linux/lib:$LD_LIBRARY_PATH
 ENV DIAGUTIL_PATH=${I_COMPILER_ROOT}/sys_check/sys_check.sh:$DIAGUTIL_PATH
-# Compiler ENV VARS
-ENV CMPLR_ROOT=/opt/intel/oneapi/compiler/latest
-ENV TBBROOT=/opt/intel/oneapi/tbb/latest
-ENV CPATH=/opt/intel/oneapi/tbb/latest/include:$CPATH
-ENV LIBRARY_PATH=/opt/intel/oneapi/tbb/latest/lib/intel64/gcc4.8:$LIBRARY_PATH
-ENV LD_LIBRARY_PATH=/opt/intel/oneapi/tbb/latest/lib/intel64/gcc4.8:$LD_LIBRARY_PATH
-ENV CMAKE_PREFIX_PATH=/opt/intel/oneapi/tbb/latest:$CMAKE_PREFIX_PATH
-ENV OCL_ICD_FILENAMES=$OCL_ICD_FILENAMES:/opt/intel/oneapi/compiler/latest/linux/lib/x64/libintelocl.so
-ENV PATH=/opt/intel/oneapi/compiler/latest/linux/bin:$PATH
-ENV PATH=/opt/intel/oneapi/compiler/latest/linux/bin/intel64:$PATH
-ENV MANPATH=$MANPATH:/opt/intel/oneapi/compiler/latest/documentation/en/man/common
-ENV CMAKE_PREFIX_PATH=/opt/intel/oneapi/compiler/latest/linux/IntelDPCPP:$CMAKE_PREFIX_PATH
-ENV NLSPATH=/opt/intel/oneapi/compiler/latest/linux/compiler/lib/intel64_lin/locale/%l_%t/%N:$NLSPATH
-ENV DIAGUTIL_PATH=/opt/intel/oneapi/compiler/latest/sys_check/sys_check.sh:$DIAGUTIL_PATH
