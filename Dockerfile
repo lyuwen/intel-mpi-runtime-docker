@@ -23,10 +23,10 @@ RUN wget -O - https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PR
 
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-      intel-oneapi-compiler-dpcpp-cpp-and-cpp-classic-2021.3.0 \
-      intel-oneapi-compiler-fortran-2021.3.0 \
-      intel-oneapi-mpi-devel-2021.3.0 \
-      intel-oneapi-mpi-2021.3.0 \
+      intel-oneapi-compiler-dpcpp-cpp-and-cpp-classic-2023.2.1 \
+      intel-oneapi-compiler-fortran-2023.2.1 \
+      intel-oneapi-mpi-devel-2021.10.0 \
+      intel-oneapi-mpi-2021.10.0 \
       libucx-dev ucx-utils \
       && \
     apt-get autoremove --purge -y && \
