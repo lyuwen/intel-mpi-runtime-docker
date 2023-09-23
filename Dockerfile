@@ -27,6 +27,7 @@ RUN apt-get update && \
       intel-oneapi-compiler-fortran-2023.2.1 \
       intel-oneapi-mpi-devel-2021.10.0 \
       intel-oneapi-mpi-2021.10.0 \
+      intel-oneapi-mkl-devel-2023.2.0
       libucx-dev ucx-utils \
       && \
     apt-get autoremove --purge -y && \
@@ -65,3 +66,10 @@ ENV MANPATH=$MANPATH:/opt/intel/oneapi/compiler/latest/documentation/en/man/comm
 ENV CMAKE_PREFIX_PATH=/opt/intel/oneapi/compiler/latest/linux/IntelDPCPP:$CMAKE_PREFIX_PATH
 ENV NLSPATH=/opt/intel/oneapi/compiler/latest/linux/compiler/lib/intel64_lin/locale/%l_%t/%N:$NLSPATH
 ENV DIAGUTIL_PATH=/opt/intel/oneapi/compiler/latest/sys_check/sys_check.sh:$DIAGUTIL_PATH
+# MKL
+ENV MKLROOT=/opt/intel/oneapi/mkl/2023.0.0
+ENV LD_LIBRARY_PATH=/opt/intel/oneapi/mkl/2023.0.0/lib/intel64:$LD_LIBRARY_PATH
+ENV LIBRARY_PATH=/opt/intel/oneapi/mkl/2023.0.0/lib/intel64:$LIBRARY_PATH
+ENV CPATH=/opt/intel/oneapi/mkl/2023.0.0/include:$CPATH
+ENV PKG_CONFIG_PATH=/opt/intel/oneapi/mkl/2023.0.0/lib/pkgconfig:$PKG_CONFIG_PATH
+ENV NLSPATH=/opt/intel/oneapi/mkl/2023.0.0/lib/intel64/locale/%l_%t/%N:$NLSPATH
