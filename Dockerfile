@@ -25,6 +25,7 @@ RUN apt-get update && \
       intel-oneapi-mpi-2021.10.0 \
       intel-oneapi-compiler-fortran-runtime-2023.2.1 \
       intel-oneapi-compiler-dpcpp-cpp-and-cpp-classic-runtime-2023.2.1 \
+      intel-oneapi-mkl-devel-2021.3.0 \
       libucx-dev ucx-utils \
       && \
     apt-get autoremove --purge -y && \
